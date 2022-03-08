@@ -17,7 +17,7 @@
         </div>
         <div class="lists">
           <%@lists.each do |list|%>
-            <div class="list">
+            <div class="list" style="background-image: url('<%= cl_image_path list.photo.key, crop: :fill %>')">
               <%= link_to list.name, list_path(list)%>
             </div>
         <%end%>
