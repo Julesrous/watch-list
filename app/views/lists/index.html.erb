@@ -1,4 +1,28 @@
-<h1>All lists</h1>
-<%@lists.each do |list|%>
-  <%=list.name%>
-<%end%>
+<html>
+  <head>
+  <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'lists', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="acceuil">
+     <h1>Save any kind of movies</h1>
+     <h2>Classic</h2>
+    </div>
+    <div class="container">
+      <div>
+        <div class="top-list">
+          <h2>My lists</h2>
+          <%= link_to "Create a movie list", "lists/new", class: "btn btn-primary new-list"%>
+        </div>
+        <div class="lists">
+          <%@lists.each do |list|%>
+            <div class="list">
+              <%= link_to list.name, list_path(list)%>
+            </div>
+        <%end%>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

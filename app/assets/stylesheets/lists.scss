@@ -1,3 +1,169 @@
 // Place all the styles related to the lists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.acceuil{
+  color:white;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(black, transparent),
+    url('cinema.jpg');
+  background-size: cover;
+}
+
+.container{
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lists{
+  display: flex;
+}
+
+.list{
+  padding: 20px;
+  margin: 10px;
+  background: linear-gradient( #3d3c3c, #ced4d9);
+  height: 150px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid;
+  border-width: 1px;
+  a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  a:hover{
+    font-size: 30px;
+    transition-duration: 0.5s;
+  }
+}
+
+.top-list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new-list{
+  background-color: #25DD88;
+  border-color: #25DD88;
+}
+
+.new-list:hover{
+  background-color: #1d995f;
+  border-color: #1d995f;
+}
+
+
+.title-show{
+  height: 40vh;
+  background: linear-gradient(#3d3c3c, #ced4d9);
+  color: white;
+}
+
+.title-show h1{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+}
+.num-movies{
+  padding: 3px;
+  background-color: #FCBF48;
+  border-radius: 4px;
+  width: 80px;
+  position: relative;
+  bottom: 15%;
+  left: 94%;
+}
+
+.movies{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie{
+  width: 400px;
+  margin: 20px;
+  box-shadow: 1px 1px 20px #c3c3c3;
+}
+
+.movie-image{
+  height: 200px;
+  width: 400px;
+  background-size: cover;
+}
+
+.movie-info{
+  background-color: white;
+  padding: 10px;
+}
+
+.star{
+  color: #FEDE01;
+}
+
+.overview{
+  color: #888E94;
+  font-size: 12px;
+}
+
+.movie-title-rating{
+  display: flex;
+}
+
+.rating{
+  margin-left: 10px;
+  color: #888E94;
+}
+
+.movie-comment-delete{
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.movie-comment-delete a{
+  color: red !important;
+}
+
+.movie-comment-delete a:hover{
+  text-decoration: underline;
+}
+
+.new-movie{
+  background-color: #25DD88;
+  border-color: #25DD88;
+  margin: 20px;
+  position: relative;
+  left: 80%;
+}
+
+.container-show{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.add-movie{
+  display:flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.new-movie:hover{
+  background-color: #1d995f;
+  border-color: #1d995f;
+}
