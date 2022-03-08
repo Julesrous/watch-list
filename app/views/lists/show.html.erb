@@ -5,7 +5,7 @@
     <%= stylesheet_link_tag 'lists', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <div class="title-show" style="background-image: url('<%= cl_image_path @list.photo.key%>')">
+    <div class="title-show" style="background-image: url('<%= cl_image_path @list.photo.key if @list.photo.attached?%>')">
       <h1><%= @list.name.capitalize%></h1>
       <p class="num-movies"><%= @list.bookmarks.size%> movies</p>
     </div>
