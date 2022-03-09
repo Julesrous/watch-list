@@ -9,33 +9,74 @@
       <h1><%= @list.name.capitalize%></h1>
       <p class="num-movies"><%= @list.bookmarks.size%> movies</p>
     </div>
-      <%= link_to "add a movie", new_list_bookmark_path(@list), class: "btn btn-primary new-movie"%>
-      <div class="movies">
-        <% @list.bookmarks.each do |bookmark|%>
-          <div class="movie">
-            <div class="movie-image" style="background-image: url('<%= bookmark.movie.poster_url%>')">
+    <%= link_to "add a movie", new_list_bookmark_path(@list), class: "btn btn-primary new-movie"%>
+    <div class="movies">
+      <% @list.bookmarks.each do |bookmark|%>
+        <div class="movie">
+          <div class="movie-image" style="background-image: url('<%= bookmark.movie.poster_url%>')">
+          </div>
+          <div class="movie-info">
+            <div class="movie-title-rating">
+              <strong><%= bookmark.movie.title %></strong> <div class="rating"> <%= bookmark.movie.rating %> <i class="star fas fa-star"></i> </div>
             </div>
-            <div class="movie-info">
-              <div class="movie-title-rating">
-                <strong><%= bookmark.movie.title %></strong> <div class="rating"> <%= bookmark.movie.rating %> <i class="star fas fa-star"></i> </div>
+            <div class="overview">
+              <%= bookmark.movie.overview %>
+            </div>
+            <div class="movie-comment-delete">
+              <div class="comment">
+                <i class="fas fa-quote-left"></i> <%= bookmark.comment%>
               </div>
-              <div class="overview">
-                <%= bookmark.movie.overview %>
+              <div class="delete">
+                <%= link_to "delete",
+                        bookmark_path(bookmark),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %>
               </div>
-              <div class="movie-comment-delete">
-                <div class="comment">
-                  <i class="fas fa-quote-left"></i> <%= bookmark.comment%>
-                </div>
-                <div class="delete">
-                  <%= link_to "delete",
-                          bookmark_path(bookmark),
-                          method: :delete,
-                          data: { confirm: "Are you sure?" } %>
-                </div>
-              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+    <div class="reviews">
+      <div class="reviews-info">
+        <h1>Reviews</h1>
+        <% @list.reviews.each do |review|%>
+          <div class="review">
+            <div>
+              <% if review.rating == 1%>
+                <i class="star fas fa-star"></i>
+              <% elsif review.rating == 2 %>
+                <i class="star fas fa-star"></i> <i class="star fas fa-star"></i>
+              <% elsif review.rating == 3 %>
+                <i class="star fas fa-star"></i> <i class="star fas fa-star"></i> <i class="star fas fa-star"></i>
+               <% elsif review.rating == 4 %>
+                <i class="star fas fa-star"></i> <i class="star fas fa-star"></i> <i class="star fas fa-star"></i> <i class="star fas fa-star"></i>
+               <% elsif review.rating == 5 %>
+                <i class="star fas fa-star"></i> <i class="star fas fa-star"></i> <i class="star fas fa-star"></i> <i class="star fas fa-star"></i> <i class="star fas fa-star"></i>
+              <%end%>
+              <small><em><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
+            </div>
+            <div>
+              <%= review.content%> 
             </div>
           </div>
         <%end%>
       </div>
+      <div class="reviews-new" data-controller="ratingstars">
+        <h1>Add your review </h1>
+        <%= simple_form_for [ @list, @review ] do |f| %>
+          <%= f.input :content, placeholder: 'Add your review here...', :required => true %>
+          <%= f.input :rating, :required => true, input_html: { "data-ratingstars-target" =>"inputrating" } %>
+          <div>
+            <i class="disabled fas fa-star" data-action="click->ratingstars#ratingScore1" data-ratingstars-target="star1"></i> 
+            <i class="disabled fas fa-star" data-action="click->ratingstars#ratingScore2" data-ratingstars-target="star2"></i> 
+            <i class="disabled fas fa-star" data-action="click->ratingstars#ratingScore3" data-ratingstars-target="star3"></i> 
+            <i class="disabled fas fa-star" data-action="click->ratingstars#ratingScore4" data-ratingstars-target="star4"></i> 
+            <i class="disabled fas fa-star" data-action="click->ratingstars#ratingScore5" data-ratingstars-target="star5"></i>
+          <div>
+          <%= f.submit "Create Review", class: "btn btn-primary submit-review" %>
+        <% end %>
+        </div>
+    </div>
   </body>
 </html>

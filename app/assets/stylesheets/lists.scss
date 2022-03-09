@@ -110,7 +110,7 @@
 }
 
 .star{
-  color: #FEDE01;
+  color: #FEDE01 !important;
 }
 
 .overview{
@@ -166,4 +166,65 @@
 .new-movie:hover{
   background-color: #1d995f;
   border-color: #1d995f;
+}
+
+.reviews{
+  display: flex;
+  justify-content: space-between;
+  border-top: solid;
+  margin: 40px;
+  margin-right: 300px;
+  margin-left: 300px;
+  border-color: #DFDFDF;
+  border-width: 1px;
+  padding-top: 50px;
+  min-width: 600px;
+  h1{
+    font-size: 25px;
+  }
+}
+
+.review{
+  margin-right: 20px;
+  border-bottom: solid;
+  border-color: #DFDFDF;
+  border-width: 1px;
+}
+
+.reviews-info{
+  width: 50%;
+}
+
+.reviews-new{
+  width: 50%;
+  background-color: white;
+  padding: 15px;
+}
+
+.reviews-new .form-control {
+  background-color: white;
+}
+
+.submit-review{
+  background-color: #25DD88;
+  border-color: #25DD88;
+  margin-top: 20px;
+}
+
+.submit-review:hover{
+  background-color: #1d995f;
+  border-color: #1d995f;
+}
+
+.review_rating .form-control{
+  visibility: hidden;
+}
+
+.review_rating{
+  height: 20px;
+  margin-bottom: 7px !important;
+}
+
+.disabled{
+  color: #d2d2d2;
 }
